@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
 app.get('/', function (req, res) {
     res.send('Start MindK Courses');
@@ -8,6 +10,9 @@ app.get('/', function (req, res) {
 app.get('/mindk', function (req, res) {
     res.send('Learn js');
 });
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
