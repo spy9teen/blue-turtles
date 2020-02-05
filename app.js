@@ -3,9 +3,8 @@ const app = express();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-const serviceLocator = require('./services/serviceLocator')
-
-serviceLocator.register('db', require('knex')({
+const serviceLocator = require('./services/serviceLocator');
+const connectMySQL = {
     client: 'mysql',
     connection: {
         host : '127.0.0.1',
@@ -13,7 +12,10 @@ serviceLocator.register('db', require('knex')({
         password : '',
         database : 'testdb'
     }
-}))
+};
+const knexConnection = connectMySQL;
+
+serviceLocator.register('db', require('knex')(knexConnection))
 
 app.get('/mindk', function (req, res) {
     res.send('Learn js');
