@@ -7,13 +7,14 @@ const UserController = require('../controllers/users');
   res.send('respond with a resource');
 });*/
 
-router.get('/', (req, res) => UserController.index(req, res));
+router.get('/', (req, res) => UserController.index(req, res));//read list
 
-router.get('/:id', (req, res, next) => {
-    /*console.log(req.params);
-    let userID = req.params.id;
-    res.send('Requested user with id: ' + userID);*/
-    UserController.read(req, res);
-});
+router.get('/:id', (req, res, next) => UserController.read(req, res));//read one
+
+router.post('/', (req, res, next) => {return {test: 'create router'}});//create
+
+router.post('/:id', (req, res, next) => {return {test: 'update router'}});//update
+
+//delete???
 
 module.exports = router;

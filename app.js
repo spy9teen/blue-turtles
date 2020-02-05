@@ -3,9 +3,17 @@ const app = express();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-app.get('/', function (req, res) {
-    res.send('Start MindK Courses');
-});
+const serviceLocator = require('./services/serviceLocator')
+
+serviceLocator.register('db', require('knex')({
+    client: 'mysql',
+    connection: {
+        host : '127.0.0.1',
+        user : 'root',
+        password : '',
+        database : 'testdb'
+    }
+}))
 
 app.get('/mindk', function (req, res) {
     res.send('Learn js');

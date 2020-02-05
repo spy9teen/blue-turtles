@@ -1,12 +1,13 @@
-//const serviceLocator = require('../services/service.locator')
+const serviceLocator = require('../services/serviceLocator');
 
 class BaseModel {
 
     constructor(tableName) {
+        this.testTableName = tableName;
+        console.log('servlocator: ', serviceLocator.get('db'));
         /*this.table = serviceLocator
             .get('db')
-            .table(tableName)*/
-            this.testTableName = tableName;
+            .table(tableName);*/
     }
 
     getList() {
