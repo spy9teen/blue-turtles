@@ -4,28 +4,24 @@ class BaseModel {
 
     constructor(tableName) {
         this.testTableName = tableName;
-        console.log('servlocator: ', serviceLocator.get('db'));
-        /*this.table = serviceLocator
+        this.table = serviceLocator
             .get('db')
-            .table(tableName);*/
+            .table(tableName);
     }
 
     getList() {
-        //return this.table.select('*')
-        return [{test: 0, list: 0, tableName: this.testTableName},
-                {test:1, list: 1, tableName: this.testTableName}];
+        //return [{list: 0, test: true}, {list: 1, test: true}];//test
+        return this.table.select('*');
     }
 
     getElement(id) {
-        /*return this.table.select('*')
-            .where('id', id)
-            .first()*/
-            return {test: 'test',
-                    id: id,
-                    tableName: this.testTableName};
+        //return {id: Number(id), test: true};//test
+        return this.table.select('*')
+            .where('id', Number(id))
+            .first();
     }
 
 
 }
 
-module.exports = BaseModel
+module.exports = BaseModel;

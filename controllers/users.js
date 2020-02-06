@@ -1,15 +1,12 @@
 const User = require('../models/users');
-const UserModel = new User('Users');
 
 class UserController {
     static async index (req, res) {
-        //res.send(await new User('Users').getList());
-        res.send(await UserModel.getList());
-    }
+        res.send(await new User('Users').getList());
+    };
 
     static async read(req, res) {
-        //res.send(await new User('Users').getElement(req.params.id))
-        res.send(await UserModel.getElement(req.params.id))
+        res.send(await new User('Users').getElement(req.params.id))
     }
     
     static create(req, res) {

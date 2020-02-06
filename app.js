@@ -1,29 +1,32 @@
 const express = require('express');
 const app = express();
+
+require('dotenv').config();
+//console.log('env test: ', process.env.DB_TYPE, process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
+
+//DB connection-------------------------------------------------
+const serviceLocator = require('./services/serviceLocator');
+
+const knexConnection = { client: process.env.DB_CLIENT,
+                         connection: 
+                            { host : process.env.DB_HOST,
+                              user : process.env.DB_USER,
+                              password : process.env.DB_PASSWORD,
+                              database : process.env.DB_NAME
+                            } 
+                        };
+serviceLocator.register('db', require('knex')(knexConnection));
+
+//Routes------------------------------------------------------
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
-const serviceLocator = require('./services/serviceLocator');
-const connectMySQL = {
-    client: 'mysql',
-    connection: {
-        host : '127.0.0.1',
-        user : 'root',
-        password : '',
-        database : 'testdb'
-    }
-};
-const knexConnection = connectMySQL;
-
-serviceLocator.register('db', require('knex')(knexConnection))
-
-app.get('/mindk', function (req, res) {
-    res.send('Learn js');
-});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.get('/mindk', (req, res) => res.send('Learn js'));
+
+//Run app-------------------------------------------------------------
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });

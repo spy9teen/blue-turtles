@@ -1,10 +1,10 @@
 
-const BaseModel = require('./baseModel')
+const BaseModel = require('./baseModel');
 
 class User extends BaseModel {
     constructor() {
-        super('users')
+        super('users');
     }
 }
 
-module.exports = User
+module.exports = User;

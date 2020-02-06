@@ -1,4 +1,4 @@
-let instance = null
+let instance = null;
 
 class ServiceLocator {
     constructor() {
@@ -14,4 +14,4 @@ class ServiceLocator {
 
 instance = new ServiceLocator();
 
-module.exports = instance
+module.exports = instance;
