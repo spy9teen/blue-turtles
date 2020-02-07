@@ -11,10 +11,19 @@ router.get('/', (req, res) => UserController.index(req, res));//read list
 
 router.get('/:id', (req, res, next) => UserController.read(req, res));//read one
 
-router.post('/', (req, res, next) => {return {test: 'create router'}});//create
+router.post('/', (req, res, next) => {
+  //return {test: 'create router'}
+  UserController.create(req, res)
+});//create
 
-router.put('/:id', (req, res, next) => {return {test: 'update router'}});//update
+router.put('/:id', (req, res, next) => {
+  //return {test: 'update router'}
+  UserController.update(req, res)
+});//update
 
-router.delete('/:id', (req, res, next) => {return {test: 'delete router'}});
+router.delete('/:id', (req, res, next) => {
+  //return {test: 'delete router'}
+  UserController.delete(req, res)
+});
 
 module.exports = router;
