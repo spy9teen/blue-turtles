@@ -13,8 +13,8 @@ router.get('/:id', (req, res, next) => UserController.read(req, res));//read one
 
 router.post('/', (req, res, next) => {return {test: 'create router'}});//create
 
-router.post('/:id', (req, res, next) => {return {test: 'update router'}});//update
+router.put('/:id', (req, res, next) => {return {test: 'update router'}});//update
 
-//delete???
+router.delete('/:id', (req, res, next) => {return {test: 'delete router'}});
 
 module.exports = router;
