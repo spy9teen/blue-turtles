@@ -10,15 +10,38 @@ class BaseModel {
     }
 
     getList() {
-        //return [{list: 0, test: true}, {list: 1, test: true}];//test
         return this.table.select('*');
     }
 
     getElement(id) {
-        //return {id: Number(id), test: true};//test
         return this.table.select('*')
             .where('id', Number(id))
             .first();
+    }
+
+    createElement(data) {
+        return {
+            test: true,
+            message: 'Base model CREATE',
+            data: data
+        };
+    }
+
+    updateElement(id, data) {
+        return {
+            test: true,
+            message: 'Base model UPDATE',
+            id: id,
+            data: data
+        };
+    }
+
+    deleteElement(id) {
+        return {
+            test: true,
+            message: 'Base model DELETE',
+            id: id
+        };
     }
 
 

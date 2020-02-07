@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());//to read req body
+
 require('dotenv').config();
 //console.log('env test: ', process.env.DB_TYPE, process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
 
