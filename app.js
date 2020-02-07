@@ -1,14 +1,32 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-app.get('/', function (req, res) {
-    res.send('Start MindK Courses');
-});
+require('dotenv').config();
+//console.log('env test: ', process.env.DB_TYPE, process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
 
-app.get('/mindk', function (req, res) {
-    res.send('Learn js');
-});
+//DB connection-------------------------------------------------
+const serviceLocator = require('./services/serviceLocator');
 
+const knexConnection = { client: process.env.DB_CLIENT,
+                         connection: 
+                            { host : process.env.DB_HOST,
+                              user : process.env.DB_USER,
+                              password : process.env.DB_PASSWORD,
+                              database : process.env.DB_NAME
+                            } 
+                        };
+serviceLocator.register('db', require('knex')(knexConnection));
+
+//Routes------------------------------------------------------
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+app.get('/mindk', (req, res) => res.send('Learn js'));
+
+//Run app-------------------------------------------------------------
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
