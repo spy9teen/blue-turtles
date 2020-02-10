@@ -10,15 +10,44 @@ class BaseModel {
     }
 
     getList() {
-        //return [{list: 0, test: true}, {list: 1, test: true}];//test
         return this.table.select('*');
     }
 
     getElement(id) {
-        //return {id: Number(id), test: true};//test
         return this.table.select('*')
             .where('id', Number(id))
             .first();
+    }
+
+    createElement(data) {
+        /*return {
+            test: true,
+            message: 'Base model CREATE',
+            data: data
+        };*/
+        return this.table.insert(data);
+    }
+
+    updateElement(id, data) {
+        /*return {
+            test: true,
+            message: 'Base model UPDATE',
+            id: id,
+            data: data
+        };*/
+        return this.table.where('id', Number(id)).update(data);
+        //???
+        /*express deprecated res.send(status): Use res.sendStatus(status) instead controllers\users.js:21:13
+        (node:764) UnhandledPromiseRejectionWarning: RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 1*/
+    }
+
+    deleteElement(id) {
+        /*return {
+            test: true,
+            message: 'Base model DELETE',
+            id: id
+        };*/
+        return this.table.where('id', Number(id)).del(); //not working
     }
 
 
