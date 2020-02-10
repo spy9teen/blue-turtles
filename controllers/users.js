@@ -11,26 +11,27 @@ class UserController {
     
     static async create(req, res) {
         res.send(await new User('Users').createElement(req.body));
-        /*res.send({test: true,
-                    message: 'user CREATE controller',
-                    request: req.body
-                });*/
     }
 
     static async update(req, res) {
-        res.send(await new User('Users').updateElement(req.params.id, req.body));
-        /*res.send({test: true,
-                    message: 'user UPDATE controller',
-                    id: req.params.id,
-                    request: req.body
-                });*/
-    }
-    static async delete(req, res) {
-        res.send(await new User('Users').deleteElement(req.params.id));
-        /*res.send({test: true,
-                    message: 'user DELETE controller',
+        let bdOperationResult = await new User('Users').updateElement(req.params.id, req.body);
+        res.send(bdOperationResult ? 200 : 400,//status
+                {
+                    message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
                     id: req.params.id
-                });*/
+                }
+        );
+    }
+
+    static async delete(req, res) {
+        let bdOperationResult = await new User('Users').deleteElement(req.params.id);
+        res.send(bdOperationResult ? 200 : 400,//status
+                {
+                    message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 
+                    id: req.params.id
+                }
+        );
+        
     }
 }
 
