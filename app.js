@@ -22,9 +22,13 @@ serviceLocator.register('db', require('knex')(knexConnection));
 //Routes------------------------------------------------------
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+const ordersRouter = require('./routes/orders');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
 
 app.get('/mindk', (req, res) => res.send('Learn js'));
 
@@ -32,6 +36,12 @@ app.get('/mindk', (req, res) => res.send('Learn js'));
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
+
+
+
+
+
+
 
 
 // const app = function (context) {

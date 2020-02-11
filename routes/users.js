@@ -2,11 +2,6 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/users');
 
-/* GET users listing. */
-/*router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-});*/
-
 router.get('/', (req, res) => UserController.index(req, res));//read list
 
 router.get('/:id', (req, res, next) => UserController.read(req, res));//read one

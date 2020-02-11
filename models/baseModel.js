@@ -36,9 +36,6 @@ class BaseModel {
             data: data
         };*/
         return this.table.where('id', Number(id)).update(data);
-        //???
-        /*express deprecated res.send(status): Use res.sendStatus(status) instead controllers\users.js:21:13
-        (node:764) UnhandledPromiseRejectionWarning: RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 1*/
     }
 
     deleteElement(id) {
