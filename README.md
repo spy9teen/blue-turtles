@@ -18,8 +18,8 @@ And define your your DB connection parameters like this:
 
 >DB_HOST=127.0.0.1
 
->DB_USER=pgUserName
+>DB_USER=postgres
 
->DB_PASSWORD=
+>DB_PASSWORD=yourPostgresPassword
 
 >DB_NAME=dbName
