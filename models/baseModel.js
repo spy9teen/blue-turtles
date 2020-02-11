@@ -25,7 +25,7 @@ class BaseModel {
             message: 'Base model CREATE',
             data: data
         };*/
-        return this.table.insert(data);
+        return this.table.insert(data).returning('*');
     }
 
     updateElement(id, data) {
