@@ -26,4 +26,4 @@ And define your your DB connection parameters like this:
 
 
 ##  SQL scripts
-Yo can find some sql scripts (create tables, insert some values etc.) in '**services/sql**' directory
+Yo can find some sql scripts (*create tables, insert some values etc.*) in [**services/sql**](services/sql) directory
