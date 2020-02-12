@@ -8,6 +8,10 @@ In the root directory create file '**.env**'. It will contain your DB connection
 ```
 #PostgreSQL:
 DB_CLIENT=pg
+
+#for mySQL:
+#DB_CLIENT=mysql
+
 DB_HOST=
 DB_USER=
 DB_PASSWORD=
