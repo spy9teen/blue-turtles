@@ -1,32 +1,19 @@
-const Product = require('../models/products');
+const Category = require('../models/categories');
 
-class ProductController {
+class CategoryController {
     static async index (req, res) {
-        res.send(await new Product('Products').getList());
-        /*res.send({
-                test: true,
-                controller: 'ProductController',
-                method: 'getList()'
-            }
-        );*/
+        res.send(await new Category().getList());
     };
 
     static async read(req, res) {
-        res.send(await new Product('Products').getElement(req.params.id));
-        /*res.send({
-                test: true,
-                controller: 'ProductController',
-                getElement: 'getElement()',
-                id: req.params.id
-            }
-        );*/
+        res.send(await new Category().getElement(req.params.id));
     }
     
     static async create(req, res) {
-        //res.send(await new Product('Products').createElement(req.body));
+        //res.send(await new Category('categories').createElement(req.body));
         res.send({
                 test: true,
-                controller: 'ProductController',
+                controller: 'CategoryController',
                 getElement: 'createElement()',
                 data: req.body
             }
@@ -34,7 +21,7 @@ class ProductController {
     }
 
     static async update(req, res) {
-        /*let bdOperationResult = await new Product('Products').updateElement(req.params.id, req.body);
+        /*let bdOperationResult = await new Category('categories').updateElement(req.params.id, req.body);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
@@ -43,7 +30,7 @@ class ProductController {
         );*/
         res.send({
                 test: true,
-                controller: 'ProductController',
+                controller: 'CategoryController',
                 getElement: 'updateElement()',
                 id: req.params.id,
                 data: req.body
@@ -53,7 +40,7 @@ class ProductController {
     }
 
     static async delete(req, res) {
-        /*let bdOperationResult = await new Product('Products').deleteElement(req.params.id);
+        /*let bdOperationResult = await new Category('categories').deleteElement(req.params.id);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 
@@ -62,7 +49,7 @@ class ProductController {
         );*/
         res.send({
                 test: true,
-                controller: 'ProductController',
+                controller: 'CategoryController',
                 getElement: 'deleteElement()',
                 id: req.params.id
             }
@@ -71,4 +58,4 @@ class ProductController {
     }
 }
 
-module.exports = ProductController
+module.exports = CategoryController

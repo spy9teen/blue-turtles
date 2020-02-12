@@ -14,6 +14,7 @@ class OrderController {
     }
     
     static async create(req, res) {
+        //@TODO: creation with prod list
         //res.send(await new Order('Orders').createElement(req.body));
         res.send({
                 test: true,
@@ -25,6 +26,7 @@ class OrderController {
     }
 
     static async update(req, res) {
+        //@TODO: creation with prod list
         /*let bdOperationResult = await new Order('Orders').updateElement(req.params.id, req.body);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
@@ -44,6 +46,7 @@ class OrderController {
     }
 
     static async delete(req, res) {
+        //@TODO: del with pg base
         /*let bdOperationResult = await new Order('Orders').deleteElement(req.params.id);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
