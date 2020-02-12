@@ -7,6 +7,22 @@ CREATE TABLE IF NOT EXISTS users (
     token VARCHAR (100)
 );
 
+/*categories*/
+CREATE TABLE IF NOT EXISTS categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR (100) NOT NULL,
+    parent_category_id BIGINT REFERENCES categories(id)
+);
+
+/*products*/
+CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR (100) NOT NULL,
+    price NUMERIC NOT NULL,
+    description TEXT,
+    category_id BIGINT NOT NULL REFERENCES categories(id)
+);
+
 /*orders*/
 CREATE TABLE IF NOT EXISTS orders (
     id SERIAL PRIMARY KEY,
