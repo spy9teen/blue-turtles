@@ -23,3 +23,7 @@ And define your your DB connection parameters like this:
 >DB_PASSWORD=yourPostgresPassword
 
 >DB_NAME=dbName
+
+
+##  SQL scripts
+Yo can find some sql scripts (create tables, insert some values etc.) in '**services/sql**' directory
