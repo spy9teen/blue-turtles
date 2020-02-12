@@ -1,25 +1,16 @@
-//const Order = require('../models/orders');
+const Order = require('../models/orders');
 
 class OrderController {
     static async index (req, res) {
-        //res.send(await new Order('Orders').getList());
-        res.send({
-                test: true,
-                controller: 'OrderController',
-                method: 'getList()'
-            }
-        );
+        res.send(await new Order('orders').getFullList());
     };
 
     static async read(req, res) {
-        //res.send(await new Order('Orders').getElement(req.params.id));
-        res.send({
-                test: true,
-                controller: 'OrderController',
-                getElement: 'getElement()',
-                id: req.params.id
-            }
-        );
+        let bdOperationResult = Boolean(req.params.idOrder) ?
+                                new Order('orders').getElement(req.params.idOrder, req.params.idUser) :
+                                new Order('orders').getList(req.params.idUser);
+
+        res.send(await bdOperationResult);
     }
     
     static async create(req, res) {

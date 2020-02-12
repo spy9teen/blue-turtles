@@ -24,6 +24,5 @@ And define your your DB connection parameters like this:
 
 >DB_NAME=dbName
 
-
 ##  SQL scripts
 You can find some sql scripts (*create tables, insert some values etc.*) in [**services/sql**](services/sql) directory
