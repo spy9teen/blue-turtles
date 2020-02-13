@@ -2,7 +2,7 @@ const Product = require('../models/products');
 
 class ProductController {
     static async index (req, res) {
-        res.send(await new Product('Products').getList());
+        res.send(await new Product().getList());
         /*res.send({
                 test: true,
                 controller: 'ProductController',
@@ -12,7 +12,7 @@ class ProductController {
     };
 
     static async read(req, res) {
-        res.send(await new Product('Products').getElement(req.params.id));
+        res.send(await new Product().getElement(req.params.id));
         /*res.send({
                 test: true,
                 controller: 'ProductController',
@@ -23,7 +23,7 @@ class ProductController {
     }
     
     static async create(req, res) {
-        //res.send(await new Product('Products').createElement(req.body));
+        //res.send(await new Product().createElement(req.body));
         res.send({
                 test: true,
                 controller: 'ProductController',
@@ -34,7 +34,7 @@ class ProductController {
     }
 
     static async update(req, res) {
-        /*let bdOperationResult = await new Product('Products').updateElement(req.params.id, req.body);
+        /*let bdOperationResult = await new Product().updateElement(req.params.id, req.body);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
@@ -53,7 +53,7 @@ class ProductController {
     }
 
     static async delete(req, res) {
-        /*let bdOperationResult = await new Product('Products').deleteElement(req.params.id);
+        /*let bdOperationResult = await new Product().deleteElement(req.params.id);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 

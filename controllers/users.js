@@ -2,20 +2,20 @@ const User = require('../models/users');
 
 class UserController {
     static async index (req, res) {
-        res.send(await new User('Users').getList());
+        res.send(await new User().getList());
     };
 
     static async read(req, res) {
-        res.send(await new User('Users').getElement(req.params.id));
+        res.send(await new User().getElement(req.params.id));
     }
     
     static async create(req, res) {
-        let bdOperationResult = await new User('Users').createElement(req.body);
+        let bdOperationResult = await new User().createElement(req.body);
         res.send(bdOperationResult);
     }
 
     static async update(req, res) {
-        let bdOperationResult = await new User('Users').updateElement(req.params.id, req.body);
+        let bdOperationResult = await new User().updateElement(req.params.id, req.body);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
@@ -25,7 +25,7 @@ class UserController {
     }
 
     static async delete(req, res) {
-        let bdOperationResult = await new User('Users').deleteElement(req.params.id);
+        let bdOperationResult = await new User().deleteElement(req.params.id);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 

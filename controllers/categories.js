@@ -10,7 +10,7 @@ class CategoryController {
     }
     
     static async create(req, res) {
-        //res.send(await new Category('categories').createElement(req.body));
+        //res.send(await new Category().createElement(req.body));
         res.send({
                 test: true,
                 controller: 'CategoryController',
@@ -21,7 +21,7 @@ class CategoryController {
     }
 
     static async update(req, res) {
-        /*let bdOperationResult = await new Category('categories').updateElement(req.params.id, req.body);
+        /*let bdOperationResult = await new Category().updateElement(req.params.id, req.body);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
@@ -40,7 +40,7 @@ class CategoryController {
     }
 
     static async delete(req, res) {
-        /*let bdOperationResult = await new Category('categories').deleteElement(req.params.id);
+        /*let bdOperationResult = await new Category().deleteElement(req.params.id);
         res.send(bdOperationResult ? 200 : 400,//status
                 {
                     message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 

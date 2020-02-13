@@ -3,7 +3,7 @@ const serviceLocator = require('../services/serviceLocator');
 class BaseModel {
 
     constructor(tableName) {
-        this.testTableName = tableName;
+        this.tableName = tableName;
         this.table = serviceLocator
             .get('db')
             .table(tableName);
