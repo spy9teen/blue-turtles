@@ -36,13 +36,13 @@ You can find some sql scripts in [**services/sql**](services/sql) directory:
 - Remove:
   - to delete all data from tables - [**services/sql/clearTables.sql**](services/sql/clearTables.sql)
   - to drop all tables - [**services/sql/dropTables.sql**](services/sql/dropTables.sql)
-  
-  ## Run app
-  To start app use command:
-  
-  >npm run start
 
-  To run app using nodemon:
-
-  >npm run start-dev
-  
+## Run app
+To start app use command:
+```
+npm run start
+```
+To run app using nodemon:
+```
+npm run start-dev
+```
