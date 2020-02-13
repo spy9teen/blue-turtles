@@ -31,3 +31,10 @@ CREATE TABLE IF NOT EXISTS orders (
     status VARCHAR (30) NOT NULL,
     user_id BIGINT NOT NULL REFERENCES users(id)
 );
+
+/*ordered_products*/
+CREATE TABLE IF NOT EXISTS ordered_products (
+    id SERIAL PRIMARY KEY,
+    product_id BIGINT NOT NULL REFERENCES products(id),
+    order_id BIGINT NOT NULL REFERENCES orders(id)
+);

@@ -1,3 +1,6 @@
+/*ordered_products*/
+DROP TABLE IF EXISTS ordered_products;
+
 /*orders*/
 DROP TABLE IF EXISTS orders;
 

@@ -1,3 +1,6 @@
+/*ordered_products*/
+DELETE FROM ordered_products;
+
 /*orders*/
 DELETE FROM orders;
 
