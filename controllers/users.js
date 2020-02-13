@@ -16,20 +16,24 @@ class UserController {
 
     static async update(req, res) {
         let bdOperationResult = await new User().updateElement(req.params.id, req.body);
-        res.send(bdOperationResult ? 200 : 400,//status
+        let isOk = Boolean(bdOperationResult && bdOperationResult.length);
+        res.send(isOk ? 200 : 400,//status
                 {
-                    message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
-                    id: req.params.id
+                    message: isOk ? 'UPDATED' : 'NOT UPDATED',
+                    id: req.params.id,
+                    result: bdOperationResult
                 }
         );
     }
 
     static async delete(req, res) {
         let bdOperationResult = await new User().deleteElement(req.params.id);
-        res.send(bdOperationResult ? 200 : 400,//status
+        let isOk = Boolean(bdOperationResult && bdOperationResult.length);
+        res.send(isOk ? 200 : 400,//status
                 {
-                    message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 
-                    id: req.params.id
+                    message: isOk ? 'DELETED' : 'NOT DELETED', 
+                    id: req.params.id,
+                    result: bdOperationResult
                 }
         );
         

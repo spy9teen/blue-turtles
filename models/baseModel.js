@@ -35,7 +35,7 @@ class BaseModel {
             id: id,
             data: data
         };*/
-        return this.table.where('id', Number(id)).update(data);
+        return this.table.where('id', Number(id)).update(data).returning('*');
     }
 
     deleteElement(id) {
@@ -44,7 +44,7 @@ class BaseModel {
             message: 'Base model DELETE',
             id: id
         };*/
-        return this.table.where('id', Number(id)).del(); //not working
+        return this.table.where('id', Number(id)).del().returning('*');
     }
 
 
