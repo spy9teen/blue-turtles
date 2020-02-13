@@ -30,7 +30,10 @@ And define your your DB connection parameters like this:
 
 ##  SQL scripts
 You can find some sql scripts in [**services/sql**](services/sql) directory:
-- to create all reqired tables - [**services/sql/createTables.sql**](services/sql/createTables.sql)
-- to fill your base with some test data - [**services/sql/insertTestData.sql**](services/sql/insertTestData.sql)
-- to drop all tables - [**services/sql/dropTables.sql**](services/sql/dropTables.sql)
-- to delete all data from tables - [**services/sql/clearTables.sql**](services/sql/clearTables.sql)
+- Create:
+  - to create all reqired tables - [**services/sql/createTables.sql**](services/sql/createTables.sql)
+  - to fill your base with some test data - [**services/sql/insertTestData.sql**](services/sql/insertTestData.sql)
+- Remove:
+  - to delete all data from tables - [**services/sql/clearTables.sql**](services/sql/clearTables.sql)
+  - to drop all tables - [**services/sql/dropTables.sql**](services/sql/dropTables.sql)
+  
