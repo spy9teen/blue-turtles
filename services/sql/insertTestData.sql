@@ -36,7 +36,7 @@ VALUES
 	(4, 'apple watch', 5000, 'apple', 14),
 	(5, 'nokia', 7000, 'old school', 13),
 	(6, 'xiaomi', 5000, 'mi', 13),
-	(7, 'samsung fridge', 15000, 'colder than your ex''s heart ', 9)
+	(7, 'samsung fridge', 15000, 'colder than your ex''s heart ', 9),
 	(8, 'toaster 1', 1000, 'for breakfast', 12);
 
 /*orders*/
