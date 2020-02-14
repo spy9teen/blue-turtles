@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR (100) NOT NULL,
-    parent_category_id BIGINT REFERENCES categories(id)
+    parent_category_id BIGINT REFERENCES categories(id) ON DELETE CASCADE
 );
 
 /*products*/
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR (100) NOT NULL,
     price NUMERIC NOT NULL,
     description TEXT,
-    category_id BIGINT NOT NULL REFERENCES categories(id)
+    category_id BIGINT NOT NULL REFERENCES categories(id) ON DELETE CASCADE
 );
 
 /*orders*/
@@ -29,12 +29,12 @@ CREATE TABLE IF NOT EXISTS orders (
     date DATE NOT NULL,
     total_price NUMERIC NOT NULL,
     status VARCHAR (30) NOT NULL,
-    user_id BIGINT NOT NULL REFERENCES users(id)
+    user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
 /*ordered_products*/
 CREATE TABLE IF NOT EXISTS ordered_products (
     id SERIAL PRIMARY KEY,
-    product_id BIGINT NOT NULL REFERENCES products(id),
-    order_id BIGINT NOT NULL REFERENCES orders(id)
+    product_id BIGINT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    order_id BIGINT NOT NULL REFERENCES orders(id) ON DELETE CASCADE
 );

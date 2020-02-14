@@ -29,52 +29,56 @@ class OrderController {
     
     static async create(req, res) {
         //@TODO: creation with prod list
-        //res.send(await new Order().createElement(req.body));
-        res.send({
+        res.send(await new Order().createElement(req.body));
+        /*res.send({
                 test: true,
                 controller: 'OrderController',
                 getElement: 'createElement()',
                 data: req.body
             }
-        );
+        );*/
     }
 
     static async update(req, res) {
         //@TODO: creation with prod list
-        /*let bdOperationResult = await new Order().updateElement(req.params.id, req.body);
-        res.send(bdOperationResult ? 200 : 400,//status
+        let bdOperationResult = await new Order().updateElement(req.params.id, req.body);
+        let isOk = Boolean(bdOperationResult || bdOperationResult.length);
+        res.send(isOk ? 200 : 400,//status
                 {
-                    message: bdOperationResult ? 'UPDATED' : 'NOT UPDATED',
-                    id: req.params.id
+                    message: isOk ? 'UPDATED' : 'NOT UPDATED',
+                    id: req.params.id,
+                    result: bdOperationResult
                 }
-        );*/
-        res.send({
+        );
+        /*res.send({
                 test: true,
                 controller: 'OrderController',
                 getElement: 'updateElement()',
                 id: req.params.id,
                 data: req.body
             }
-        );
+        );*/
 
     }
 
     static async delete(req, res) {
-        //@TODO: del with pg base
-        /*let bdOperationResult = await new Order().deleteElement(req.params.id);
-        res.send(bdOperationResult ? 200 : 400,//status
+        //@TODO: del with prod list
+        let bdOperationResult = await new Order().deleteElement(req.params.id);
+        let isOk = Boolean(bdOperationResult || bdOperationResult.length);
+        res.send(isOk ? 200 : 400,//status
                 {
-                    message: bdOperationResult ? 'DELETED' : 'NOT DELETED', 
-                    id: req.params.id
+                    message: isOk ? 'DELETED' : 'NOT DELETED', 
+                    id: req.params.id,
+                    result: bdOperationResult
                 }
-        );*/
-        res.send({
+        );
+        /*res.send({
                 test: true,
                 controller: 'OrderController',
                 getElement: 'deleteElement()',
                 id: req.params.id
             }
-        );
+        );*/
                 
     }
 }
