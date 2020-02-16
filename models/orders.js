@@ -1,5 +1,6 @@
 
 const BaseModel = require('./baseModel');
+const serviceLocator = require('../services/serviceLocator');
 
 class Order extends BaseModel {
     constructor() {
@@ -7,6 +8,10 @@ class Order extends BaseModel {
 
         this.tableNameProd = 'products';
         this.tableNameOrderedProd = 'ordered_products';
+
+        this.tableProd = serviceLocator
+            .get('db')
+            .table('ordered_products');
     }
 
     getFullList() {
@@ -32,6 +37,14 @@ class Order extends BaseModel {
                         .join(this.tableNameProd, this.tableNameOrderedProd + '.product_id', this.tableNameProd + '.id')
                         .where(this.tableName + '.id', idOrder)
                         .where(this.tableName + '.user_id', idUser);
+    }
+
+    setProductList(idOrder, idUser, productList) {
+        return 'test';
+    }
+
+    clearProductList(idOrder, idUser) {
+        return this.tableNameOrderedProd.where('order_id', Number(idOrder)).del().returning('*');//check user?? 
     }
 }
 
