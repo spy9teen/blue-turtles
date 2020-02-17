@@ -3,8 +3,7 @@ const app = express();
 
 app.use(express.json());//to read req body
 
-require('dotenv').config();
-//console.log('env test: ', process.env.DB_TYPE, process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
+require('dotenv').config();//to use .env file
 
 //DB connection-------------------------------------------------
 const serviceLocator = require('./services/serviceLocator');
@@ -22,9 +21,15 @@ serviceLocator.register('db', require('knex')(knexConnection));
 //Routes------------------------------------------------------
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+const ordersRouter = require('./routes/orders');
+const categoriesRouter = require('./routes/categories');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
+app.use('/categories', categoriesRouter);
 
 app.get('/mindk', (req, res) => res.send('Learn js'));
 
@@ -33,7 +38,7 @@ app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
 
-
+//some trash---------------------------------------------------------
 // const app = function (context) {
 //     context.response = "hello";
 //     return context;

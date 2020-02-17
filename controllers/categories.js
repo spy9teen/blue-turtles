@@ -1,22 +1,20 @@
-const User = require('../models/users');
+const Category = require('../models/categories');
 
-class UserController {
+class CategoryController {
     static async index (req, res) {
-        res.send(await new User().getList());
+        res.send(await new Category().getList());
     };
 
     static async read(req, res) {
-        res.send(await new User().getElement(req.params.id));
+        res.send(await new Category().getElement(req.params.id));
     }
     
     static async create(req, res) {
-        /*let bdOperationResult = await new User().createElement(req.body);
-        res.send(bdOperationResult);*/
-        res.send(await new User().createElement(req.body));
+        res.send(await new Category().createElement(req.body));
     }
 
     static async update(req, res) {
-        let bdOperationResult = await new User().updateElement(req.params.id, req.body);
+        let bdOperationResult = await new Category().updateElement(req.params.id, req.body);
         let isOk = Boolean(bdOperationResult || bdOperationResult.length);
         res.send(isOk ? 200 : 400,//status
                 {
@@ -25,10 +23,11 @@ class UserController {
                     result: bdOperationResult
                 }
         );
+
     }
 
     static async delete(req, res) {
-        let bdOperationResult = await new User().deleteElement(req.params.id);
+        let bdOperationResult = await new Category().deleteElement(req.params.id);
         let isOk = Boolean(bdOperationResult || bdOperationResult.length);
         res.send(isOk ? 200 : 400,//status
                 {
@@ -36,9 +35,8 @@ class UserController {
                     id: req.params.id,
                     result: bdOperationResult
                 }
-        );
-        
+        );                
     }
 }
 
-module.exports = UserController
+module.exports = CategoryController

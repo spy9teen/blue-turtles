@@ -3,7 +3,7 @@ const serviceLocator = require('../services/serviceLocator');
 class BaseModel {
 
     constructor(tableName) {
-        this.testTableName = tableName;
+        this.tableName = tableName;
         this.table = serviceLocator
             .get('db')
             .table(tableName);
@@ -20,34 +20,15 @@ class BaseModel {
     }
 
     createElement(data) {
-        /*return {
-            test: true,
-            message: 'Base model CREATE',
-            data: data
-        };*/
-        return this.table.insert(data);
+        return this.table.insert(data).returning('*');
     }
 
     updateElement(id, data) {
-        /*return {
-            test: true,
-            message: 'Base model UPDATE',
-            id: id,
-            data: data
-        };*/
-        return this.table.where('id', Number(id)).update(data);
-        //???
-        /*express deprecated res.send(status): Use res.sendStatus(status) instead controllers\users.js:21:13
-        (node:764) UnhandledPromiseRejectionWarning: RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 1*/
+        return this.table.where('id', Number(id)).update(data).returning('*');
     }
 
     deleteElement(id) {
-        /*return {
-            test: true,
-            message: 'Base model DELETE',
-            id: id
-        };*/
-        return this.table.where('id', Number(id)).del(); //not working
+        return this.table.where('id', Number(id)).del().returning('*');
     }
 
 
