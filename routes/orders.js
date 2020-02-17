@@ -4,8 +4,6 @@ const OrderController = require('../controllers/orders');
 
 router.get('/', (req, res) => OrderController.index(req, res));
 
-//router.get('/:idUser', (req, res, next) => {OrderController.read(req, res)});
-//router.get('/:idUser/:idOrder', (req, res, next) => {OrderController.read(req, res)});
 router.get(['/:idUser', '/:idUser/:idOrder'],
         (req, res, next) => {OrderController.read(req, res)});
 

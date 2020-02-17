@@ -31,6 +31,11 @@ class Order extends BaseModel {
                 }).first();
     }
 
+    updateElement(idOrder, idUser, data) {
+        //return this.table.where({id: Number(idOrder), user_id: Number(idUser)}).update(data).returning('*').toSQL();
+        return this.table.where({id: Number(idOrder), user_id: Number(idUser)}).update(data).returning('*');
+    }
+
     getProductList(idOrder, idUser) {
         return this.table.select(this.tableNameProd + '.id', this.tableNameProd + '.name', this.tableNameProd + '.price')
                         .join(this.tableNameOrderedProd, this.tableName + '.id', this.tableNameOrderedProd + '.order_id')
@@ -40,11 +45,11 @@ class Order extends BaseModel {
     }
 
     setProductList(idOrder, idUser, productList) {
-        return 'test';
+        return this.tableProd.insert(productList).returning('*');
     }
 
     clearProductList(idOrder, idUser) {
-        return this.tableNameOrderedProd.where('order_id', Number(idOrder)).del().returning('*');//check user?? 
+        return this.tableProd.where('order_id', Number(idOrder)).del().returning('*');
     }
 }
 

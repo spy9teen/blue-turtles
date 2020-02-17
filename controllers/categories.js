@@ -11,13 +11,6 @@ class CategoryController {
     
     static async create(req, res) {
         res.send(await new Category().createElement(req.body));
-        /*res.send({
-                test: true,
-                controller: 'CategoryController',
-                getElement: 'createElement()',
-                data: req.body
-            }
-        );*/
     }
 
     static async update(req, res) {
@@ -30,14 +23,6 @@ class CategoryController {
                     result: bdOperationResult
                 }
         );
-        /*res.send({
-                test: true,
-                controller: 'CategoryController',
-                getElement: 'updateElement()',
-                id: req.params.id,
-                data: req.body
-            }
-        );*/
 
     }
 
@@ -50,15 +35,7 @@ class CategoryController {
                     id: req.params.id,
                     result: bdOperationResult
                 }
-        );
-        /*res.send({
-                test: true,
-                controller: 'CategoryController',
-                getElement: 'deleteElement()',
-                id: req.params.id
-            }
-        );*/
-                
+        );                
     }
 }
 
